@@ -2,7 +2,6 @@
 
 set -euxo pipefail
 
-# TODO: Ensure this is the correct GitHub homepage where releases can be downloaded for temporal.
 GH_REPO="https://github.com/temporalio/cli"
 TOOL_NAME="temporal"
 TOOL_TEST="temporal --version"
@@ -31,28 +30,26 @@ list_github_tags() {
 }
 
 list_all_versions() {
-	# TODO: Adapt this. By default we simply list the tag names from GitHub releases.
-	# Change this function if temporal has other means of determining installable versions.
 	list_github_tags
 }
 
 get_arch() {
-  uname | tr '[:upper:]' '[:lower:]'
+	uname | tr '[:upper:]' '[:lower:]'
 }
 
 get_cpu() {
-  local machine_hardware_name
-  machine_hardware_name=${ASDF_TCTL_OVERWRITE_ARCH:-"$(uname -m)"}
+	local machine_hardware_name
+	machine_hardware_name=${ASDF_TCTL_OVERWRITE_ARCH:-"$(uname -m)"}
 
-  case "$machine_hardware_name" in
-    'x86_64') local cpu_type="amd64";;
-    'powerpc64le' | 'ppc64le') local cpu_type="ppc64le";;    
-    'aarch64') local cpu_type="arm64";;
-    'armv7l') local cpu_type="arm";;
-    *) local cpu_type="$machine_hardware_name";;
-  esac
+	case "$machine_hardware_name" in
+	'x86_64') local cpu_type="amd64" ;;
+	'powerpc64le' | 'ppc64le') local cpu_type="ppc64le" ;;
+	'aarch64') local cpu_type="arm64" ;;
+	'armv7l') local cpu_type="arm" ;;
+	*) local cpu_type="$machine_hardware_name" ;;
+	esac
 
-  echo "$cpu_type"
+	echo "$cpu_type"
 }
 
 download_release() {
