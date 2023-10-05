@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-set -euxo pipefail
+set -euo pipefail
 
 GH_REPO="https://github.com/temporalio/cli"
 TOOL_NAME="temporal"
