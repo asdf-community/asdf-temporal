@@ -24,7 +24,7 @@ Plugin:
 ```shell
 asdf plugin add temporal
 # or
-asdf plugin add temporal https://github.com/joshkaplinsky/asdf-temporal.git
+asdf plugin add temporal https://github.com/asdf-community/asdf-temporal.git
 ```
 
 temporal:
